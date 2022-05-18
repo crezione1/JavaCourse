@@ -11,6 +11,7 @@
     <modules>
         <module>utils</module>
         <module>data-structure</module>
+        <module>reflection</module>
     </modules>
 
     <properties>

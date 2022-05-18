@@ -5,16 +5,15 @@ import org.example.data.Accounts;
 import java.time.LocalDate;
 import java.util.Objects;
 
-class Test {
+public class HashTable<K, V> {
+
     public static void main(String[] args) {
         var accounts = Accounts.generateAccountList(10);
         var emailToBirthdayTable = new HashTable<String, LocalDate>();
         accounts.forEach(a -> emailToBirthdayTable.put(a.getEmail(), a.getBirthday()));
         emailToBirthdayTable.printTable();
     }
-}
 
-public class HashTable<K, V> {
     private static final int INIT_CAPACITY = 14;
     private static final float LOAD_FACTOR = 0.5f;
     private int occupiedBucketsCount = 0;
@@ -64,8 +63,12 @@ public class HashTable<K, V> {
             Node<K, V>[] resizedStore = new Node[store.length * 2];
             for (int i = 0; i < store.length; i++) {
                 if(!Objects.isNull(store[i])) {
-                    var newIndex = hash(store[i].key) % resizedStore.length;
-                    resizedStore[newIndex] = store[i];
+                    var currentNode = store[i];
+                    while (!Objects.isNull(currentNode)) {
+                        var newIndex = hash(currentNode.key) % resizedStore.length;
+                        resizedStore[newIndex] = currentNode;
+                        currentNode = currentNode.next;
+                    }
                 }
             }
 

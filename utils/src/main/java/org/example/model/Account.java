@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @ToString
 @EqualsAndHashCode(of = "email")
 public class Account {
-    private Long id;
+    public Long id;
     private String firstName;
     private String lastName;
     private String email;
