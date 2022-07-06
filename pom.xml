@@ -12,6 +12,8 @@
         <module>utils</module>
         <module>data-structure</module>
         <module>reflection</module>
+        <module>algo</module>
+        <module>Bring</module>
     </modules>
 
     <properties>
